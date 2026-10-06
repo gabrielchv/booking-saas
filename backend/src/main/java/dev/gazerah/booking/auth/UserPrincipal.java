@@ -25,6 +25,14 @@ public class UserPrincipal implements UserDetails {
         this.role = user.getRole();
     }
 
+    public UserPrincipal(Long userId, Long tenantId, String email, Role role) {
+        this.userId = userId;
+        this.tenantId = tenantId;
+        this.email = email;
+        this.password = null;
+        this.role = role;
+    }
+
     public Long getUserId() {
         return userId;
     }
