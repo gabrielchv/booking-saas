@@ -29,7 +29,6 @@ public class UserController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('OWNER','ADMIN')")
     public List<UserResponse> list() {
         return service.list();
     }
