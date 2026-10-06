@@ -51,8 +51,22 @@ public class SecurityConfig {
                         .requestMatchers("/api/auth/**", "/api/health", "/actuator/health").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .anyRequest().authenticated())
+                .exceptionHandling(ex -> ex
+                        .authenticationEntryPoint((request, response, e) ->
+                                writeJson(response, 401, "Unauthorized", "Authentication required"))
+                        .accessDeniedHandler((request, response, e) ->
+                                writeJson(response, 403, "Forbidden", "Access denied")))
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
+    }
+
+    private static void writeJson(jakarta.servlet.http.HttpServletResponse response,
+                                  int status, String error, String message) throws java.io.IOException {
+        response.setStatus(status);
+        response.setContentType("application/json");
+        response.getWriter().write("{\"status\":" + status
+                + ",\"error\":\"" + error
+                + "\",\"message\":\"" + message + "\"}");
     }
 
     @Bean
