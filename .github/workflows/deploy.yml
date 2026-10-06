@@ -4,6 +4,11 @@ on:
   workflow_dispatch:
   push:
     branches: [master]
+    paths:
+      - 'backend/**'
+      - 'frontend/**'
+      - 'Dockerfile'
+      - '.github/workflows/deploy.yml'
 
 permissions:
   contents: read
