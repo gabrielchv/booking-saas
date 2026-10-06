@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "services")
-public class Service extends BaseEntity {
+public class Offering extends BaseEntity {
 
     @Column(name = "tenant_id", nullable = false)
     private Long tenantId;
@@ -26,10 +26,10 @@ public class Service extends BaseEntity {
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
 
-    protected Service() {
+    protected Offering() {
     }
 
-    public Service(Long tenantId, String name, String description, Integer durationMinutes, BigDecimal price) {
+    public Offering(Long tenantId, String name, String description, Integer durationMinutes, BigDecimal price) {
         this.tenantId = tenantId;
         this.name = name;
         this.description = description;
