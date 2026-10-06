@@ -18,7 +18,6 @@ infra/*.tfstate
 infra/*.tfstate.*
 infra/*.tfvars
 !infra/terraform.tfvars.example
-infra/.terraform.lock.hcl
 
 # --- IDEs / editors ---
 .idea/

@@ -1,0 +1,8 @@
+project_id     = "status-page-7823"
+region         = "southamerica-east1"
+service_name   = "booking-api"
+db_name        = "booking"
+db_user        = "booking"
+database_password = "change-me"
+jwt_secret     = "change-me-please-change-me-please-change-me-32chars"
+github_repo    = "gabrielchv/booking-saas"
