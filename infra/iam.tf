@@ -4,7 +4,7 @@ resource "google_service_account" "deployer" {
 }
 
 resource "google_iam_workload_identity_pool" "github" {
-  workload_identity_pool_id = "github-pool"
+  workload_identity_pool_id = "github-actions-pool"
   display_name              = "GitHub Actions"
 }
 
@@ -46,11 +46,5 @@ resource "google_project_iam_member" "deployer_sa_user" {
 resource "google_project_iam_member" "deployer_ar_writer" {
   project = var.project_id
   role    = "roles/artifactregistry.writer"
-  member  = "serviceAccount:${google_service_account.deployer.email}"
-}
-
-resource "google_project_iam_member" "runtime_cloudsql_client" {
-  project = var.project_id
-  role    = "roles/cloudsql.client"
   member  = "serviceAccount:${google_service_account.deployer.email}"
 }
